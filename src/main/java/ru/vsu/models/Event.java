@@ -18,19 +18,21 @@ public class Event {
     private Category category;
     private String address;
     private Date dateTime;
+    private User creator;
 
     @ManyToMany(mappedBy = "events")
     private List<User> participants;
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private List<Comment> comments;
 
-    public Event(String name, Status status, String description, Category category, String address, Date dateTime, List<User> participants, List<Comment> comments) {
+    public Event(String name, Status status, String description, Category category, String address, Date dateTime, User creator, List<User> participants, List<Comment> comments) {
         this.name = name;
         this.status = status;
         this.description = description;
         this.category = category;
         this.address = address;
         this.dateTime = dateTime;
+        this.creator = creator;
         this.participants = participants;
         this.comments = comments;
     }
@@ -44,6 +46,14 @@ public class Event {
 
     public void setEventID(int eventID) {
         this.eventID = eventID;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     public String getName() {

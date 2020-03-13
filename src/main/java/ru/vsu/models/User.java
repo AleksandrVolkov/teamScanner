@@ -15,7 +15,6 @@ public class User {
     private String password;
     private Role userRole;
     private Status status;
-    private boolean isCreator;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "EventsComments",
@@ -30,12 +29,11 @@ public class User {
     private String city;
     private int age;
 
-    public User(String login, String password, Role userRole, Status status, boolean isCreator, List<Event> events, List<Comment> comments, String city, int age) {
+    public User(String login, String password, Role userRole, Status status,  List<Event> events, List<Comment> comments, String city, int age) {
         this.login = login;
         this.password = password;
         this.userRole = userRole;
         this.status = status;
-        this.isCreator = isCreator;
         this.events = events;
         this.comments = comments;
         this.city = city;
@@ -51,14 +49,6 @@ public class User {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public boolean isCreator() {
-        return isCreator;
-    }
-
-    public void setCreator(boolean creator) {
-        isCreator = creator;
     }
 
     public int getUserID() {
