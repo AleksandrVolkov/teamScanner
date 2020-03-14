@@ -13,7 +13,7 @@ public class User {
     private int userID;
     private String login;
     private String password;
-    private Role userRole;
+    private List<Role> userRoles;
     private Status status;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -29,10 +29,10 @@ public class User {
     private String city;
     private int age;
 
-    public User(String login, String password, Role userRole, Status status,  List<Event> events, List<Comment> comments, String city, int age) {
+    public User(String login, String password, List<Role> userRoles, Status status,  List<Event> events, List<Comment> comments, String city, int age) {
         this.login = login;
         this.password = password;
-        this.userRole = userRole;
+        this.userRoles = userRoles;
         this.status = status;
         this.events = events;
         this.comments = comments;
@@ -75,12 +75,12 @@ public class User {
         this.password = password;
     }
 
-    public Role getUserRole() {
-        return userRole;
+    public List<Role> getUserRoles() {
+        return userRoles;
     }
 
-    public void setUserRole(Role userRole) {
-        this.userRole = userRole;
+    public void setUserRoles(List<Role> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public List<Event> getEvents() {
